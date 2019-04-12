@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+<!--set the image size (Width & height), the position and some padding and margin so that it looks
+exactly as in the expected result.-->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/profile"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Miss Piggy"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvName"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="I love donuts and I have my own TV show"
+        android:textSize="18sp"
+        android:textStyle="italic"/>
+
+<!--Now you need to add the profile statistics layout, this layout show you the number of donuts
+this user ate and the number of followers he have. You will use a LinearLayout with horizontal
+orientation to be able to show these data in one line.-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDescription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+<!--- Inside the LinearLayout there will be another 2 more LinearLayout, one will hold the donuts
+data while the other one holds the followers data.
+To have these 2 LinearLayout appear on the same line you will need to use android:layout_weight
+ Using this attribute you tell Android how much space that you need for this layout and make sure
+  you set the width of the layout to (0dp)-->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="3260"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donuts"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+            <!--Next you need to use Android View to draw the horizontal line, this line will be placed
+            under the main LinearLayout. Drawing a horizontal line is almost similar to vertical line,
+             the only difference is you need to set the layout width as (match_parent) while you set
+             the height to the value that you want which represent the thickness of the line.-->
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#A9A9A9" />
+
+
+        </LinearLayout>
+
+        <!--Now you need to add a vertical line between the (Donuts) and the (Fans) LinearLayout using
+         Android View. Using Android View, you can set android:layout_width to a value which represent
+         the thickness of the line that you want to draw, while the layout height should be set as (match_parent)
+         so that the line will be drawn vertically and finally set the color of the line using android:background="#A9A9A9".-->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#A9A9A9" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="20M"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fans"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#A9A9A9" />
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- 1. you will need to create a custom button that have curve edges as shown in the expected output.
+    You will use the standard Android Button with a bit of customization.
+    Create a new file under the drawable folder and name it (round_button), this file will be used
+     as a background for the Button.-->
+
+    <!-- 2. Inside round_button.xml file you will need to set few attributes: the shape type, color, radius and the paddings.-->
+
+    <!--3. The Button will be positioned below the horizontal line and in the center, set the Button
+     background as the (round_button) and change the text color of the Button to white.-->
+    <Button
+        android:id="@+id/btnFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDescription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp"
+        android:background="@drawable/round_button"
+        android:text="Follow me"
+        android:textColor="#ffff" />
+
+</RelativeLayout>
